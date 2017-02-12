@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shaver
 {
-    public class KeyboardButton : Panel
+    /// <summary>
+    /// Represents a keyboard button.
+    /// </summary>
+    public abstract class KeyboardButton : Panel
     {
         private MouseState currentMouseState;
         
@@ -18,6 +17,11 @@ namespace Shaver
 
         private Color mouseDownColor;
 
+        private Color textColor;
+
+        /// <summary>
+        /// Gets or sets the default background color of the control.
+        /// </summary>
         public Color DefaultColor
         {
             get
@@ -27,10 +31,13 @@ namespace Shaver
             set
             {
                 defaultColor = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
         }
 
+        /// <summary>
+        /// Gets or sets the mouse over background color of the control.
+        /// </summary>
         public Color MouseOverColor
         {
             get
@@ -40,10 +47,13 @@ namespace Shaver
             set
             {
                 mouseOverColor = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
         }
 
+        /// <summary>
+        /// Gets or sets the mouse down background color of the control.
+        /// </summary>
         public Color MouseDownColor
         {
             get
@@ -53,7 +63,23 @@ namespace Shaver
             set
             {
                 mouseDownColor = value;
-                Refresh();
+                Refresh(); // Redraw.
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the text color of the control.
+        /// </summary>
+        public Color TextColor
+        {
+            get
+            {
+                return textColor;
+            }
+            set
+            {
+                textColor = value;
+                Refresh(); // Redraw.
             }
         }
 
@@ -69,8 +95,20 @@ namespace Shaver
             set
             {
                 currentMouseState = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of a keyboard button.
+        /// </summary>
+        public KeyboardButton() : base()
+        {
+            // Set default colours.
+            defaultColor = Color.DimGray;
+            mouseOverColor = Color.Silver;
+            mouseDownColor = Color.Black;
+            textColor = Color.White;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -94,26 +132,26 @@ namespace Shaver
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            CurrentMouseState = MouseState.Over;
             base.OnMouseEnter(e);
+            CurrentMouseState = MouseState.Over; // Change mouse state.
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            CurrentMouseState = MouseState.Out;
             base.OnMouseLeave(e);
+            CurrentMouseState = MouseState.Out; // Change mouse state.
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            CurrentMouseState = MouseState.Down;
             base.OnMouseDown(e);
+            CurrentMouseState = MouseState.Down; // Change mouse state.
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            CurrentMouseState = MouseState.Over;
             base.OnMouseUp(e);
+            CurrentMouseState = MouseState.Over; // Change mouse state.
         }
     }
 }

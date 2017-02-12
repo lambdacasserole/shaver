@@ -26,7 +26,7 @@ namespace Shaver
             return fonts.Families[0];
         }
 
-        public static Font getFont(float size)
+        public static Font GetFont(float size)
         {
             return new Font(getFontFamily(), size);
         }

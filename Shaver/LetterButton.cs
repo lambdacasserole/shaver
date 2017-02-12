@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace Shaver
 {
+    /// <summary>
+    /// Represents a letter button.
+    /// </summary>
     public class LetterButton : KeyboardButton
     {
         private bool shiftActive;
@@ -12,11 +15,43 @@ namespace Shaver
 
         private string defaultCharacter;
 
+        private string defaultCharacterName;
+
+        private string shiftCharacterName;
+
         private bool shiftCharacterEnabled;
 
-        public string DefaultCharacterName { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the default character on this key.
+        /// </summary>
+        public string DefaultCharacterName
+        {
+            get
+            {
+                return defaultCharacterName;
+            }
+            set
+            {
+                defaultCharacterName = value;
+                Refresh(); // Redraw.
+            }
+        }
 
-        public string ShiftCharacterName { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the shift character on this key.
+        /// </summary>
+        public string ShiftCharacterName
+        {
+            get
+            {
+                return ShiftCharacterName;
+            }
+            set
+            {
+                shiftCharacterName = value;
+                Refresh(); // Redraw.
+            }
+        }
 
         /// <summary>
         /// Gets or sets whether or not this key has its shift character enabled.
@@ -30,7 +65,7 @@ namespace Shaver
             set
             {
                 shiftCharacterEnabled = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
         }
 
@@ -41,7 +76,8 @@ namespace Shaver
         {
             get
             {
-                return (ShiftActive && ShiftCharacterEnabled) ? ShiftCharacterName : DefaultCharacterName;
+                return (ShiftActive && ShiftCharacterEnabled) 
+                    ? ShiftCharacterName : DefaultCharacterName;
             }
         }
 
@@ -57,7 +93,7 @@ namespace Shaver
             set
             {
                 shiftActive = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
         }
 
@@ -73,7 +109,7 @@ namespace Shaver
             set
             {
                 shiftCharacter = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
         }
 
@@ -89,7 +125,7 @@ namespace Shaver
             set
             {
                 defaultCharacter = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
         }
         
@@ -100,7 +136,8 @@ namespace Shaver
         {
             get
             {
-                return (ShiftActive && ShiftCharacterEnabled) ? ShiftCharacter : DefaultCharacter;
+                return (ShiftActive && ShiftCharacterEnabled) 
+                    ? ShiftCharacter : DefaultCharacter;
             }
         }
 
@@ -111,12 +148,17 @@ namespace Shaver
         {
             get
             {
-                return (ShiftActive || !ShiftCharacterEnabled) ? DefaultCharacter : ShiftCharacter;
+                return (ShiftActive || !ShiftCharacterEnabled) 
+                    ? DefaultCharacter : ShiftCharacter;
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of a letter button.
+        /// </summary>
         public LetterButton()
         {
+            // Set default characters.
             DefaultCharacter = ShavianCharacterHelper.Oil;
             DefaultCharacterName = "Oil";
             ShiftCharacter = ShavianCharacterHelper.Out;
@@ -128,26 +170,30 @@ namespace Shaver
         {
             base.OnPaint(e);
 
+            // Prepare brushes.
+            Brush textBrush = new SolidBrush(TextColor);
+            Brush mutedBrush = new SolidBrush(Color.FromArgb(100, TextColor));
+
             // Get font we'll be drawing with.
-            Font font = ShavianFontHelper.getFont(14);
+            Font font = ShavianFontHelper.GetFont(14);
             Size stringSize = e.Graphics.MeasureString(ActiveCharacter, font).ToSize();
             Point centerPoint = new Point(Width / 2 - (stringSize.Width / 2), Height / 2 - (stringSize.Height / 2) - 5);
-            e.Graphics.DrawString(ActiveCharacter, font, new SolidBrush(Color.White), centerPoint);
+            e.Graphics.DrawString(ActiveCharacter, font, textBrush, centerPoint);
 
             // Draw shift character if there is one.
             if (ShiftCharacterEnabled)
             {
-                Font shiftFont = ShavianFontHelper.getFont(10);
+                Font shiftFont = ShavianFontHelper.GetFont(10);
                 Size shiftStringSize = e.Graphics.MeasureString(InactiveCharacter, shiftFont).ToSize();
                 Point upperPoint = new Point(5, 0);
-                e.Graphics.DrawString(InactiveCharacter, shiftFont, new SolidBrush(Color.Silver), upperPoint);
+                e.Graphics.DrawString(InactiveCharacter, shiftFont, mutedBrush, upperPoint);
             }
 
             // Draw character name.
             Font nameFont = new Font("Arial", 8);
             Size shiftNameString = e.Graphics.MeasureString(ActiveCharacterName, nameFont).ToSize();
             Point lowerPoint = new Point(Width / 2 - (shiftNameString.Width / 2), Height - shiftNameString.Height - 5);
-            e.Graphics.DrawString(ActiveCharacterName, nameFont, new SolidBrush(Color.White), lowerPoint);
+            e.Graphics.DrawString(ActiveCharacterName, nameFont, textBrush, lowerPoint);
         }
     }
 }

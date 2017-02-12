@@ -1,27 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shaver
 {
     public partial class Form1 : Form
     {
+        private List<ShavianCharacter> typedText;
+
         private bool keyboardShift;
 
         private Dictionary<Keys, LetterButton> letterKeyMappings;
 
+        private string TypedText
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (ShavianCharacter character in typedText)
+                {
+                    sb.Append(character.Character);
+                }
+                return sb.ToString();
+            }
+        }
+
+        private void Backspace()
+        {
+            typedText.RemoveAt(typedText.Count - 1);
+            inputBox.Text = TypedText;
+        }
+
+        private void TypeText(string text)
+        {
+            typedText.Add(new ShavianCharacter(text));
+            inputBox.Text = TypedText;
+        }
+
         public Form1()
         {
             InitializeComponent();
+
+            // Initialize list.
+            typedText = new List<ShavianCharacter>();
 
             // Initialize letter key mappings.
             letterKeyMappings = new Dictionary<Keys, LetterButton>()
@@ -58,7 +80,7 @@ namespace Shaver
             keyboardShift = false;
 
             // Set Shavian font for input box.
-            inputBox.Font = ShavianFontHelper.getFont(12);
+            inputBox.Font = ShavianFontHelper.GetFont(12);
         }
 
         private void Form1_Disposed(object sender, EventArgs e)
@@ -104,7 +126,7 @@ namespace Shaver
             LetterButton key = sender as LetterButton;
             if (key != null)
             {
-                inputBox.AppendText(key.ActiveCharacter);
+                TypeText(key.ActiveCharacter);
             }
         }
 
@@ -127,12 +149,12 @@ namespace Shaver
             else if (e.KeyCode == Keys.Back)
             {
                 // Do backspace.
-                inputBox.Text = inputBox.Text.Substring(0, inputBox.Text.Length - 2);
+                Backspace();
             }
             else if (e.KeyCode == Keys.Space)
             {
                 // Append space.
-                inputBox.Text += " ";
+                TypeText(" ");
             }
             else
             {

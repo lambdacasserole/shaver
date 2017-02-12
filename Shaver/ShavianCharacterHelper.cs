@@ -124,13 +124,18 @@ namespace Shaver
             Ear, Ian, Yew
         };
 
-        public string getAtCodePoint(int codePoint)
+        public static string GetAtCodePoint(int codePoint)
         {
             if (codePoint < 0 || codePoint >= codePoints.Length)
             {
                 throw new IndexOutOfRangeException("There is no Shavian character at this code point.");
             }
             return codePoints[codePoint];
+        }
+
+        public static byte[] GetBytesAtCodePoint(int codePoint)
+        {
+            return Encoding.Unicode.GetBytes(GetAtCodePoint(codePoint));
         }
     }
 }
