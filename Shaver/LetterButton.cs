@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Shaver
 {
-    public class KeyButton : KeyboardButton
+    public class LetterButton : KeyboardButton
     {
         private bool shiftActive;
 
@@ -115,7 +115,7 @@ namespace Shaver
             }
         }
 
-        public KeyButton()
+        public LetterButton()
         {
             DefaultCharacter = ShavianCharacterHelper.Oil;
             DefaultCharacterName = "Oil";

@@ -55,7 +55,7 @@
     <Compile Include="KeyboardButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="KeyButton.cs">
+    <Compile Include="LetterButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MouseState.cs" />

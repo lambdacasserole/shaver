@@ -17,16 +17,48 @@ namespace Shaver
     {
         private bool keyboardShift;
 
+        private Dictionary<Keys, LetterButton> letterKeyMappings;
+
         public Form1()
         {
             InitializeComponent();
-            keyboardShift = false;
-            textBox1.Font = ShavianFontHelper.getFont(12);
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            textBox1.Text += "\U00010450";
+            // Initialize letter key mappings.
+            letterKeyMappings = new Dictionary<Keys, LetterButton>()
+            {
+                {Keys.Q, keyButton1},
+                {Keys.W, keyButton2},
+                {Keys.E, keyButton3},
+                {Keys.R, keyButton4},
+                {Keys.T, keyButton5},
+                {Keys.Y, keyButton6},
+                {Keys.U, keyButton7},
+                {Keys.I, keyButton8},
+                {Keys.O, keyButton9},
+                {Keys.P, keyButton10},
+                {Keys.A, keyButton20},
+                {Keys.S, keyButton19},
+                {Keys.D, keyButton18},
+                {Keys.F, keyButton17},
+                {Keys.G, keyButton16},
+                {Keys.H, keyButton15},
+                {Keys.J, keyButton14},
+                {Keys.K, keyButton13},
+                {Keys.L, keyButton12},
+                {Keys.Z, keyButton26},
+                {Keys.X, keyButton25},
+                {Keys.C, keyButton24},
+                {Keys.V, keyButton23},
+                {Keys.B, keyButton22},
+                {Keys.N, keyButton21},
+                {Keys.M, keyButton11},
+            };
+
+            // Shift defaults to off.
+            keyboardShift = false;
+
+            // Set Shavian font for input box.
+            inputBox.Font = ShavianFontHelper.getFont(12);
         }
 
         private void Form1_Disposed(object sender, EventArgs e)
@@ -35,16 +67,11 @@ namespace Shaver
             //File.Delete(fontPath);
         }
 
-        private void keyButton1_Click(object sender, EventArgs e)
-        {
-            textBox1.Text += ShavianCharacterHelper.Out;
-        }
-
         private void updateKeyboardShift()
         {
             foreach (Control control in this.Controls)
             {
-                KeyButton key = control as KeyButton;
+                LetterButton key = control as LetterButton;
                 if (key != null)
                 {
                     key.ShiftActive = keyboardShift;
@@ -52,7 +79,7 @@ namespace Shaver
             }
         }
 
-        private void setKeyboardShift(bool shift)
+        private void SetKeyboardShift(bool shift)
         {
             if (shift != keyboardShift)
             {
@@ -63,7 +90,7 @@ namespace Shaver
 
         private void toggleKeyboardShift()
         {
-            setKeyboardShift(!keyboardShift);
+            SetKeyboardShift(!keyboardShift);
         }
 
         private void keyButton27_Click(object sender, EventArgs e)
@@ -73,15 +100,20 @@ namespace Shaver
 
         private void LetterKey_Click(object sender, EventArgs e)
         {
-            KeyButton key = sender as KeyButton;
-            textBox1.Text += key.ActiveCharacter;
+            // Cast to letter button and append active character.
+            LetterButton key = sender as LetterButton;
+            if (key != null)
+            {
+                inputBox.AppendText(key.ActiveCharacter);
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            // Set shift if pressed.
             if (e.KeyCode == Keys.ShiftKey)
             {
-                setKeyboardShift(true);
+                SetKeyboardShift(true);
             }
         }
 
@@ -89,7 +121,26 @@ namespace Shaver
         {
             if (e.KeyCode == Keys.ShiftKey)
             {
-                setKeyboardShift(false);
+                // Unset shift.
+                SetKeyboardShift(false);
+            }
+            else if (e.KeyCode == Keys.Back)
+            {
+                // Do backspace.
+                inputBox.Text = inputBox.Text.Substring(0, inputBox.Text.Length - 2);
+            }
+            else if (e.KeyCode == Keys.Space)
+            {
+                // Append space.
+                inputBox.Text += " ";
+            }
+            else
+            {
+                // Was letter key pressed?
+                if (letterKeyMappings.ContainsKey(e.KeyCode))
+                {
+                    LetterKey_Click(letterKeyMappings[e.KeyCode], e);
+                }
             }
         }
 
@@ -98,7 +149,7 @@ namespace Shaver
             // Add letter key click event to every letter key.
             foreach (Control control in this.Controls)
             {
-                KeyButton key = control as KeyButton;
+                LetterButton key = control as LetterButton;
                 if (key != null)
                 {
                     key.Click += LetterKey_Click;

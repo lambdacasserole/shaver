@@ -28,46 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.inputBox = new System.Windows.Forms.TextBox();
             this.keyButton27 = new Shaver.ShiftButton();
-            this.keyButton11 = new Shaver.KeyButton();
-            this.keyButton12 = new Shaver.KeyButton();
-            this.keyButton21 = new Shaver.KeyButton();
-            this.keyButton13 = new Shaver.KeyButton();
-            this.keyButton22 = new Shaver.KeyButton();
-            this.keyButton14 = new Shaver.KeyButton();
-            this.keyButton23 = new Shaver.KeyButton();
-            this.keyButton15 = new Shaver.KeyButton();
-            this.keyButton24 = new Shaver.KeyButton();
-            this.keyButton16 = new Shaver.KeyButton();
-            this.keyButton25 = new Shaver.KeyButton();
-            this.keyButton17 = new Shaver.KeyButton();
-            this.keyButton26 = new Shaver.KeyButton();
-            this.keyButton18 = new Shaver.KeyButton();
-            this.keyButton19 = new Shaver.KeyButton();
-            this.keyButton20 = new Shaver.KeyButton();
-            this.keyButton10 = new Shaver.KeyButton();
-            this.keyButton9 = new Shaver.KeyButton();
-            this.keyButton8 = new Shaver.KeyButton();
-            this.keyButton7 = new Shaver.KeyButton();
-            this.keyButton6 = new Shaver.KeyButton();
-            this.keyButton5 = new Shaver.KeyButton();
-            this.keyButton4 = new Shaver.KeyButton();
-            this.keyButton3 = new Shaver.KeyButton();
-            this.keyButton2 = new Shaver.KeyButton();
-            this.keyButton1 = new Shaver.KeyButton();
+            this.keyButton11 = new Shaver.LetterButton();
+            this.keyButton12 = new Shaver.LetterButton();
+            this.keyButton21 = new Shaver.LetterButton();
+            this.keyButton13 = new Shaver.LetterButton();
+            this.keyButton22 = new Shaver.LetterButton();
+            this.keyButton14 = new Shaver.LetterButton();
+            this.keyButton23 = new Shaver.LetterButton();
+            this.keyButton15 = new Shaver.LetterButton();
+            this.keyButton24 = new Shaver.LetterButton();
+            this.keyButton16 = new Shaver.LetterButton();
+            this.keyButton25 = new Shaver.LetterButton();
+            this.keyButton17 = new Shaver.LetterButton();
+            this.keyButton26 = new Shaver.LetterButton();
+            this.keyButton18 = new Shaver.LetterButton();
+            this.keyButton19 = new Shaver.LetterButton();
+            this.keyButton20 = new Shaver.LetterButton();
+            this.keyButton10 = new Shaver.LetterButton();
+            this.keyButton9 = new Shaver.LetterButton();
+            this.keyButton8 = new Shaver.LetterButton();
+            this.keyButton7 = new Shaver.LetterButton();
+            this.keyButton6 = new Shaver.LetterButton();
+            this.keyButton5 = new Shaver.LetterButton();
+            this.keyButton4 = new Shaver.LetterButton();
+            this.keyButton3 = new Shaver.LetterButton();
+            this.keyButton2 = new Shaver.LetterButton();
+            this.keyButton1 = new Shaver.LetterButton();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.DimGray;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(534, 75);
-            this.textBox1.TabIndex = 0;
+            this.inputBox.BackColor = System.Drawing.Color.DimGray;
+            this.inputBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputBox.ForeColor = System.Drawing.Color.White;
+            this.inputBox.Location = new System.Drawing.Point(12, 12);
+            this.inputBox.Multiline = true;
+            this.inputBox.Name = "textBox1";
+            this.inputBox.ReadOnly = true;
+            this.inputBox.Size = new System.Drawing.Size(534, 75);
+            this.inputBox.TabIndex = 0;
             // 
             // keyButton27
             // 
@@ -495,7 +496,6 @@
             this.keyButton1.ShiftCharacterName = "Out";
             this.keyButton1.Size = new System.Drawing.Size(48, 48);
             this.keyButton1.TabIndex = 1;
-            this.keyButton1.Click += new System.EventHandler(this.keyButton1_Click);
             // 
             // Form1
             // 
@@ -530,7 +530,7 @@
             this.Controls.Add(this.keyButton3);
             this.Controls.Add(this.keyButton2);
             this.Controls.Add(this.keyButton1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.inputBox);
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Shaver";
@@ -545,33 +545,33 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private KeyButton keyButton1;
-        private KeyButton keyButton2;
-        private KeyButton keyButton3;
-        private KeyButton keyButton4;
-        private KeyButton keyButton5;
-        private KeyButton keyButton6;
-        private KeyButton keyButton7;
-        private KeyButton keyButton8;
-        private KeyButton keyButton9;
-        private KeyButton keyButton10;
-        private KeyButton keyButton12;
-        private KeyButton keyButton13;
-        private KeyButton keyButton14;
-        private KeyButton keyButton15;
-        private KeyButton keyButton16;
-        private KeyButton keyButton17;
-        private KeyButton keyButton18;
-        private KeyButton keyButton19;
-        private KeyButton keyButton20;
-        private KeyButton keyButton11;
-        private KeyButton keyButton21;
-        private KeyButton keyButton22;
-        private KeyButton keyButton23;
-        private KeyButton keyButton24;
-        private KeyButton keyButton25;
-        private KeyButton keyButton26;
+        private System.Windows.Forms.TextBox inputBox;
+        private LetterButton keyButton1;
+        private LetterButton keyButton2;
+        private LetterButton keyButton3;
+        private LetterButton keyButton4;
+        private LetterButton keyButton5;
+        private LetterButton keyButton6;
+        private LetterButton keyButton7;
+        private LetterButton keyButton8;
+        private LetterButton keyButton9;
+        private LetterButton keyButton10;
+        private LetterButton keyButton12;
+        private LetterButton keyButton13;
+        private LetterButton keyButton14;
+        private LetterButton keyButton15;
+        private LetterButton keyButton16;
+        private LetterButton keyButton17;
+        private LetterButton keyButton18;
+        private LetterButton keyButton19;
+        private LetterButton keyButton20;
+        private LetterButton keyButton11;
+        private LetterButton keyButton21;
+        private LetterButton keyButton22;
+        private LetterButton keyButton23;
+        private LetterButton keyButton24;
+        private LetterButton keyButton25;
+        private LetterButton keyButton26;
         private ShiftButton keyButton27;
     }
 }
