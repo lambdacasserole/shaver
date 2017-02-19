@@ -135,6 +135,14 @@ namespace Shaver
             SetKeyboardShift(!keyboardShift);
         }
 
+        private void CaretToEnd()
+        {
+            if (inputBox.Text.Length > 0)
+            {
+                inputBox.SelectionStart = inputBox.Text.Length - 1;
+            }
+        }
+
         private void keyButton27_Click(object sender, EventArgs e)
         {
             toggleKeyboardShift();
@@ -170,11 +178,13 @@ namespace Shaver
             {
                 // Do backspace.
                 Backspace();
+                CaretToEnd();
             }
             else if (e.KeyCode == Keys.Space)
             {
                 // Append space.
                 TypeText(" ");
+                CaretToEnd();
             }
             else
             {
@@ -182,6 +192,7 @@ namespace Shaver
                 if (letterKeyMappings.ContainsKey(e.KeyCode))
                 {
                     LetterKey_Click(letterKeyMappings[e.KeyCode], e);
+                    CaretToEnd();
                 }
             }
         }
@@ -197,6 +208,11 @@ namespace Shaver
                     key.Click += LetterKey_Click;
                 }
             }
+        }
+
+        private void copyButton1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(inputBox.Text);
         }
     }
 }

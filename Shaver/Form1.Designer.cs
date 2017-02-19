@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.inputBox = new System.Windows.Forms.TextBox();
+            this.copyButton1 = new Shaver.CopyButton();
             this.keyButton27 = new Shaver.ShiftButton();
             this.keyButton11 = new Shaver.LetterButton();
             this.keyButton12 = new Shaver.LetterButton();
@@ -61,18 +62,32 @@
             // 
             // inputBox
             // 
-            this.inputBox.BackColor = System.Drawing.Color.DimGray;
+            this.inputBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.inputBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inputBox.ForeColor = System.Drawing.Color.White;
             this.inputBox.Location = new System.Drawing.Point(12, 12);
             this.inputBox.Multiline = true;
             this.inputBox.Name = "inputBox";
             this.inputBox.ReadOnly = true;
-            this.inputBox.Size = new System.Drawing.Size(534, 75);
+            this.inputBox.Size = new System.Drawing.Size(480, 75);
             this.inputBox.TabIndex = 0;
+            // 
+            // copyButton1
+            // 
+            this.copyButton1.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.copyButton1.IconSize = 15;
+            this.copyButton1.Location = new System.Drawing.Point(498, 12);
+            this.copyButton1.MouseDownColor = System.Drawing.Color.Black;
+            this.copyButton1.MouseOverColor = System.Drawing.Color.Gray;
+            this.copyButton1.Name = "copyButton1";
+            this.copyButton1.Size = new System.Drawing.Size(48, 75);
+            this.copyButton1.TabIndex = 26;
+            this.copyButton1.TextColor = System.Drawing.Color.White;
+            this.copyButton1.Click += new System.EventHandler(this.copyButton1_Click);
             // 
             // keyButton27
             // 
+            this.keyButton27.ArrowSize = 8;
             this.keyButton27.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.keyButton27.Location = new System.Drawing.Point(12, 201);
             this.keyButton27.MouseDownColor = System.Drawing.Color.Black;
@@ -531,6 +546,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(558, 261);
+            this.Controls.Add(this.copyButton1);
             this.Controls.Add(this.keyButton27);
             this.Controls.Add(this.keyButton11);
             this.Controls.Add(this.keyButton12);
@@ -559,8 +575,10 @@
             this.Controls.Add(this.keyButton2);
             this.Controls.Add(this.keyButton1);
             this.Controls.Add(this.inputBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Shaver";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -602,6 +620,7 @@
         private LetterButton keyButton25;
         private LetterButton keyButton26;
         private ShiftButton keyButton27;
+        private CopyButton copyButton1;
     }
 }
 
