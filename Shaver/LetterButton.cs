@@ -44,7 +44,7 @@ namespace Shaver
         {
             get
             {
-                return ShiftCharacterName;
+                return shiftCharacterName;
             }
             set
             {
