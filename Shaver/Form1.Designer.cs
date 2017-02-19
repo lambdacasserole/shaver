@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.inputBox = new System.Windows.Forms.TextBox();
             this.keyButton27 = new Shaver.ShiftButton();
             this.keyButton11 = new Shaver.LetterButton();
@@ -58,14 +59,14 @@
             this.keyButton1 = new Shaver.LetterButton();
             this.SuspendLayout();
             // 
-            // textBox1
+            // inputBox
             // 
             this.inputBox.BackColor = System.Drawing.Color.DimGray;
             this.inputBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inputBox.ForeColor = System.Drawing.Color.White;
             this.inputBox.Location = new System.Drawing.Point(12, 12);
             this.inputBox.Multiline = true;
-            this.inputBox.Name = "textBox1";
+            this.inputBox.Name = "inputBox";
             this.inputBox.ReadOnly = true;
             this.inputBox.Size = new System.Drawing.Size(534, 75);
             this.inputBox.TabIndex = 0;
@@ -79,6 +80,7 @@
             this.keyButton27.Name = "keyButton27";
             this.keyButton27.Size = new System.Drawing.Size(76, 48);
             this.keyButton27.TabIndex = 20;
+            this.keyButton27.TextColor = System.Drawing.Color.White;
             this.keyButton27.Click += new System.EventHandler(this.keyButton27_Click);
             // 
             // keyButton11
@@ -96,6 +98,7 @@
             this.keyButton11.ShiftCharacterName = "Ooze";
             this.keyButton11.Size = new System.Drawing.Size(49, 48);
             this.keyButton11.TabIndex = 25;
+            this.keyButton11.TextColor = System.Drawing.Color.White;
             // 
             // keyButton12
             // 
@@ -112,6 +115,7 @@
             this.keyButton12.ShiftCharacterName = null;
             this.keyButton12.Size = new System.Drawing.Size(49, 48);
             this.keyButton12.TabIndex = 19;
+            this.keyButton12.TextColor = System.Drawing.Color.White;
             // 
             // keyButton21
             // 
@@ -128,6 +132,7 @@
             this.keyButton21.ShiftCharacterName = "Hung";
             this.keyButton21.Size = new System.Drawing.Size(49, 48);
             this.keyButton21.TabIndex = 24;
+            this.keyButton21.TextColor = System.Drawing.Color.White;
             // 
             // keyButton13
             // 
@@ -144,6 +149,7 @@
             this.keyButton13.ShiftCharacterName = null;
             this.keyButton13.Size = new System.Drawing.Size(49, 48);
             this.keyButton13.TabIndex = 18;
+            this.keyButton13.TextColor = System.Drawing.Color.White;
             // 
             // keyButton22
             // 
@@ -160,6 +166,7 @@
             this.keyButton22.ShiftCharacterName = null;
             this.keyButton22.Size = new System.Drawing.Size(49, 48);
             this.keyButton22.TabIndex = 23;
+            this.keyButton22.TextColor = System.Drawing.Color.White;
             // 
             // keyButton14
             // 
@@ -176,6 +183,7 @@
             this.keyButton14.ShiftCharacterName = "Judge";
             this.keyButton14.Size = new System.Drawing.Size(49, 48);
             this.keyButton14.TabIndex = 17;
+            this.keyButton14.TextColor = System.Drawing.Color.White;
             // 
             // keyButton23
             // 
@@ -192,6 +200,7 @@
             this.keyButton23.ShiftCharacterName = "Yew";
             this.keyButton23.Size = new System.Drawing.Size(49, 48);
             this.keyButton23.TabIndex = 22;
+            this.keyButton23.TextColor = System.Drawing.Color.White;
             // 
             // keyButton15
             // 
@@ -208,6 +217,7 @@
             this.keyButton15.ShiftCharacterName = "They";
             this.keyButton15.Size = new System.Drawing.Size(49, 48);
             this.keyButton15.TabIndex = 16;
+            this.keyButton15.TextColor = System.Drawing.Color.White;
             // 
             // keyButton24
             // 
@@ -224,6 +234,7 @@
             this.keyButton24.ShiftCharacterName = "Ear";
             this.keyButton24.Size = new System.Drawing.Size(49, 48);
             this.keyButton24.TabIndex = 21;
+            this.keyButton24.TextColor = System.Drawing.Color.White;
             // 
             // keyButton16
             // 
@@ -240,6 +251,7 @@
             this.keyButton16.ShiftCharacterName = "Name";
             this.keyButton16.Size = new System.Drawing.Size(49, 48);
             this.keyButton16.TabIndex = 15;
+            this.keyButton16.TextColor = System.Drawing.Color.White;
             // 
             // keyButton25
             // 
@@ -256,6 +268,7 @@
             this.keyButton25.ShiftCharacterName = "Air";
             this.keyButton25.Size = new System.Drawing.Size(49, 48);
             this.keyButton25.TabIndex = 20;
+            this.keyButton25.TextColor = System.Drawing.Color.White;
             // 
             // keyButton17
             // 
@@ -272,6 +285,7 @@
             this.keyButton17.ShiftCharacterName = "Ride";
             this.keyButton17.Size = new System.Drawing.Size(49, 48);
             this.keyButton17.TabIndex = 14;
+            this.keyButton17.TextColor = System.Drawing.Color.White;
             // 
             // keyButton26
             // 
@@ -288,6 +302,7 @@
             this.keyButton26.ShiftCharacterName = "Measure";
             this.keyButton26.Size = new System.Drawing.Size(49, 48);
             this.keyButton26.TabIndex = 19;
+            this.keyButton26.TextColor = System.Drawing.Color.White;
             // 
             // keyButton18
             // 
@@ -304,6 +319,7 @@
             this.keyButton18.ShiftCharacterName = "Array";
             this.keyButton18.Size = new System.Drawing.Size(49, 48);
             this.keyButton18.TabIndex = 13;
+            this.keyButton18.TextColor = System.Drawing.Color.White;
             // 
             // keyButton19
             // 
@@ -320,6 +336,7 @@
             this.keyButton19.ShiftCharacterName = "Sure";
             this.keyButton19.Size = new System.Drawing.Size(49, 48);
             this.keyButton19.TabIndex = 12;
+            this.keyButton19.TextColor = System.Drawing.Color.White;
             // 
             // keyButton20
             // 
@@ -336,6 +353,7 @@
             this.keyButton20.ShiftCharacterName = "Ash";
             this.keyButton20.Size = new System.Drawing.Size(49, 48);
             this.keyButton20.TabIndex = 11;
+            this.keyButton20.TextColor = System.Drawing.Color.White;
             // 
             // keyButton10
             // 
@@ -352,6 +370,7 @@
             this.keyButton10.ShiftCharacterName = "Or";
             this.keyButton10.Size = new System.Drawing.Size(48, 48);
             this.keyButton10.TabIndex = 10;
+            this.keyButton10.TextColor = System.Drawing.Color.White;
             // 
             // keyButton9
             // 
@@ -368,6 +387,7 @@
             this.keyButton9.ShiftCharacterName = "Oak";
             this.keyButton9.Size = new System.Drawing.Size(48, 48);
             this.keyButton9.TabIndex = 9;
+            this.keyButton9.TextColor = System.Drawing.Color.White;
             // 
             // keyButton8
             // 
@@ -384,6 +404,7 @@
             this.keyButton8.ShiftCharacterName = "Eat";
             this.keyButton8.Size = new System.Drawing.Size(48, 48);
             this.keyButton8.TabIndex = 8;
+            this.keyButton8.TextColor = System.Drawing.Color.White;
             // 
             // keyButton7
             // 
@@ -400,6 +421,7 @@
             this.keyButton7.ShiftCharacterName = "Wool";
             this.keyButton7.Size = new System.Drawing.Size(48, 48);
             this.keyButton7.TabIndex = 7;
+            this.keyButton7.TextColor = System.Drawing.Color.White;
             // 
             // keyButton6
             // 
@@ -416,6 +438,7 @@
             this.keyButton6.ShiftCharacterName = "Awe";
             this.keyButton6.Size = new System.Drawing.Size(48, 48);
             this.keyButton6.TabIndex = 6;
+            this.keyButton6.TextColor = System.Drawing.Color.White;
             // 
             // keyButton5
             // 
@@ -432,6 +455,7 @@
             this.keyButton5.ShiftCharacterName = "Thigh";
             this.keyButton5.Size = new System.Drawing.Size(48, 48);
             this.keyButton5.TabIndex = 5;
+            this.keyButton5.TextColor = System.Drawing.Color.White;
             // 
             // keyButton4
             // 
@@ -448,6 +472,7 @@
             this.keyButton4.ShiftCharacterName = "Are";
             this.keyButton4.Size = new System.Drawing.Size(48, 48);
             this.keyButton4.TabIndex = 4;
+            this.keyButton4.TextColor = System.Drawing.Color.White;
             // 
             // keyButton3
             // 
@@ -464,6 +489,7 @@
             this.keyButton3.ShiftCharacterName = "Age";
             this.keyButton3.Size = new System.Drawing.Size(48, 48);
             this.keyButton3.TabIndex = 3;
+            this.keyButton3.TextColor = System.Drawing.Color.White;
             // 
             // keyButton2
             // 
@@ -480,6 +506,7 @@
             this.keyButton2.ShiftCharacterName = "Ian";
             this.keyButton2.Size = new System.Drawing.Size(48, 48);
             this.keyButton2.TabIndex = 2;
+            this.keyButton2.TextColor = System.Drawing.Color.White;
             // 
             // keyButton1
             // 
@@ -496,6 +523,7 @@
             this.keyButton1.ShiftCharacterName = "Out";
             this.keyButton1.Size = new System.Drawing.Size(48, 48);
             this.keyButton1.TabIndex = 1;
+            this.keyButton1.TextColor = System.Drawing.Color.White;
             // 
             // Form1
             // 
@@ -531,6 +559,7 @@
             this.Controls.Add(this.keyButton2);
             this.Controls.Add(this.keyButton1);
             this.Controls.Add(this.inputBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Shaver";

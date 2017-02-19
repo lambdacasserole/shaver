@@ -26,12 +26,22 @@ namespace Shaver
             }
         }
 
+        /// <summary>
+        /// Performs a backspace operation.
+        /// </summary>
         private void Backspace()
         {
-            typedText.RemoveAt(typedText.Count - 1);
-            inputBox.Text = TypedText;
+            if (typedText.Count > 0)
+            {
+                typedText.RemoveAt(typedText.Count - 1);
+                inputBox.Text = TypedText;
+            }
         }
 
+        /// <summary>
+        /// Types the given text into the editor.
+        /// </summary>
+        /// <param name="text">The text to type.</param>
         private void TypeText(string text)
         {
             typedText.Add(new ShavianCharacter(text));
@@ -89,7 +99,10 @@ namespace Shaver
             //File.Delete(fontPath);
         }
 
-        private void updateKeyboardShift()
+        /// <summary>
+        /// Updates the shifted status of every character on the keyboard.
+        /// </summary>
+        private void UpdateKeyboardShift()
         {
             foreach (Control control in this.Controls)
             {
@@ -101,15 +114,22 @@ namespace Shaver
             }
         }
 
+        /// <summary>
+        /// Sets the shifted status of every character on the keyboard.
+        /// </summary>
+        /// <param name="shift">The new shifted status.</param>
         private void SetKeyboardShift(bool shift)
         {
             if (shift != keyboardShift)
             {
                 keyboardShift = shift;
-                updateKeyboardShift();
+                UpdateKeyboardShift();
             }
         }
 
+        /// <summary>
+        /// Toggles the shifted status of every character on the keyboard.
+        /// </summary>
         private void toggleKeyboardShift()
         {
             SetKeyboardShift(!keyboardShift);
