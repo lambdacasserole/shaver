@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.inputBox = new System.Windows.Forms.TextBox();
+            this.colorSchemeButton1 = new Shaver.ColorSchemeButton();
             this.copyButton1 = new Shaver.CopyButton();
             this.keyButton27 = new Shaver.ShiftButton();
             this.keyButton11 = new Shaver.LetterButton();
@@ -71,6 +72,19 @@
             this.inputBox.ReadOnly = true;
             this.inputBox.Size = new System.Drawing.Size(480, 75);
             this.inputBox.TabIndex = 0;
+            // 
+            // colorSchemeButton1
+            // 
+            this.colorSchemeButton1.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.colorSchemeButton1.IconSize = 8;
+            this.colorSchemeButton1.Location = new System.Drawing.Point(471, 202);
+            this.colorSchemeButton1.MouseDownColor = System.Drawing.Color.Black;
+            this.colorSchemeButton1.MouseOverColor = System.Drawing.Color.Gray;
+            this.colorSchemeButton1.Name = "colorSchemeButton1";
+            this.colorSchemeButton1.Size = new System.Drawing.Size(75, 47);
+            this.colorSchemeButton1.TabIndex = 27;
+            this.colorSchemeButton1.TextColor = System.Drawing.Color.White;
+            this.colorSchemeButton1.Click += new System.EventHandler(this.colorSchemeButton1_Click);
             // 
             // copyButton1
             // 
@@ -546,6 +560,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(558, 261);
+            this.Controls.Add(this.colorSchemeButton1);
             this.Controls.Add(this.copyButton1);
             this.Controls.Add(this.keyButton27);
             this.Controls.Add(this.keyButton11);
@@ -584,7 +599,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            this.Disposed += new System.EventHandler(this.Form1_Disposed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -621,6 +635,7 @@
         private LetterButton keyButton26;
         private ShiftButton keyButton27;
         private CopyButton copyButton1;
+        private ColorSchemeButton colorSchemeButton1;
     }
 }
 

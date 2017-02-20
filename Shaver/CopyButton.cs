@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace Shaver
 {
+    /// <summary>
+    /// A copy keyboard button.
+    /// </summary>
     class CopyButton : KeyboardButton
     {
         private int iconSize;
@@ -36,11 +39,13 @@ namespace Shaver
         {
             base.OnPaint(e);
 
-            // Build shift arrow polygon.
+            // Draw two pages copy symbol.
             int height = iconSize;
             int width = (height / 3) * 2;
-            e.Graphics.DrawRectangle(new Pen(TextColor), (int)(Width / 2) - (int)(width / 1.5), (int)(Height / 2) - (int)(height / 1.5), width, height);
-            e.Graphics.FillRectangle(new SolidBrush(TextColor), (int)(Width / 2) - (int)(width / 4), (int)(Height / 2) - (int)(height / 4), width, height);
+            e.Graphics.DrawRectangle(new Pen(TextColor), (int)(Width / 2) - (int)(width / 1.5), 
+                (int)(Height / 2) - (int)(height / 1.5), width, height);
+            e.Graphics.FillRectangle(new SolidBrush(TextColor), (int)(Width / 2) - (int)(width / 4), 
+                (int)(Height / 2) - (int)(height / 4), width, height);
         }
     }
 }

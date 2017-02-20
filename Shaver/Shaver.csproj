@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorSchemeButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CopyButton.cs">
       <SubType>Component</SubType>
     </Compile>

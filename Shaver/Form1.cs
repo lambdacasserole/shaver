@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -13,10 +14,14 @@ namespace Shaver
 
         private Dictionary<Keys, LetterButton> letterKeyMappings;
 
+        /// <summary>
+        /// Gets the typed text in the input editor as a string.
+        /// </summary>
         private string TypedText
         {
             get
             {
+                // Build text from characters.
                 StringBuilder sb = new StringBuilder();
                 foreach (ShavianCharacter character in typedText)
                 {
@@ -24,6 +29,94 @@ namespace Shaver
                 }
                 return sb.ToString();
             }
+        }
+
+        private bool HasColorScheme()
+        {
+            return System.IO.File.Exists("theme.txt");
+        }
+
+        private Color GetSavedColorScheme()
+        {
+            var color = Color.FromArgb(255, 64, 64, 64);
+            if (HasColorScheme())
+            {
+                var text = System.IO.File.ReadAllText("theme.txt");
+                var components = text.Split(',');
+                if (components.Length == 3)
+                {
+                    var success = true;
+                    var converted = new int[3];
+                    for (int i = 0; i < components.Length; i++)
+                    {
+                        success = success && int.TryParse(components[i], out converted[i]);
+                    }
+                    if (success)
+                    {
+                        color = Color.FromArgb(255, converted[0], converted[1], converted[2]);
+                    }
+                }
+            }
+            return color;
+        }
+
+        private Color Lighten(Color original, int amount)
+        {
+            int r = original.R;
+            int g = original.G;
+            int b = original.B;
+            r += amount;
+            g += amount;
+            b += amount;
+            if (r > 255)
+            {
+                r = 255;
+            }
+            if (r < 0)
+            {
+                r = 0;
+            }
+            if (g > 255)
+            {
+                g = 255;
+            }
+            if (g < 0)
+            {
+                g = 0;
+            }
+            if (b > 255)
+            {
+                b = 255;
+            }
+            if (b < 0)
+            {
+                b = 0;
+            }
+            return Color.FromArgb(original.A, r, g, b);
+        }
+
+        private void SetColorScheme(Color color)
+        {
+            Color txtc = (color.R + color.G + color.B) / 3 > 128 ? Color.Black : Color.White;
+            foreach (Control c in Controls)
+            {
+                KeyboardButton kb = c as KeyboardButton;
+                if (kb != null)
+                {
+                    kb.DefaultColor = color;
+                    kb.MouseOverColor = Lighten(color, 25);
+                    kb.MouseDownColor = Lighten(color, -25);
+                    kb.TextColor = txtc;
+                }
+                TextBox tb = c as TextBox;
+                if (tb != null)
+                {
+                    tb.BackColor = Lighten(color, -35);
+                    tb.ForeColor = txtc;
+                }
+            }
+            BackColor = Lighten(color, -10);
+            System.IO.File.WriteAllText("theme.txt", color.R + "," + color.G + "," + color.B);
         }
 
         /// <summary>
@@ -93,12 +186,6 @@ namespace Shaver
             inputBox.Font = ShavianFontHelper.GetFont(12);
         }
 
-        private void Form1_Disposed(object sender, EventArgs e)
-        {
-            //fonts.Dispose();
-            //File.Delete(fontPath);
-        }
-
         /// <summary>
         /// Updates the shifted status of every character on the keyboard.
         /// </summary>
@@ -135,6 +222,9 @@ namespace Shaver
             SetKeyboardShift(!keyboardShift);
         }
 
+        /// <summary>
+        /// Moves the caret to the end of the input box.
+        /// </summary>
         private void CaretToEnd()
         {
             if (inputBox.Text.Length > 0)
@@ -145,6 +235,7 @@ namespace Shaver
 
         private void keyButton27_Click(object sender, EventArgs e)
         {
+            // Shift on or off.
             toggleKeyboardShift();
         }
 
@@ -208,11 +299,25 @@ namespace Shaver
                     key.Click += LetterKey_Click;
                 }
             }
+
+            // Load color scheme.
+            SetColorScheme(GetSavedColorScheme());
         }
 
         private void copyButton1_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(inputBox.Text);
+            // Copy text to clipboard.
+            Clipboard.SetText(TypedText);
+        }
+
+        private void colorSchemeButton1_Click(object sender, EventArgs e)
+        {
+            // Show color dialog to set UI color.
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                SetColorScheme(dialog.Color);
+            }
         }
     }
 }
