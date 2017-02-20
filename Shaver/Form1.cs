@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Shaver
 {
     public partial class Form1 : Form
     {
+        private const string ThemeFileName = "theme.txt";
+
         private List<ShavianCharacter> typedText;
 
         private bool keyboardShift;
@@ -33,7 +36,7 @@ namespace Shaver
 
         private bool HasColorScheme()
         {
-            return System.IO.File.Exists("theme.txt");
+            return File.Exists(ThemeFileName);
         }
 
         private Color GetSavedColorScheme()
@@ -41,7 +44,7 @@ namespace Shaver
             var color = Color.FromArgb(255, 64, 64, 64);
             if (HasColorScheme())
             {
-                var text = System.IO.File.ReadAllText("theme.txt");
+                var text = File.ReadAllText(ThemeFileName);
                 var components = text.Split(',');
                 if (components.Length == 3)
                 {
@@ -97,26 +100,37 @@ namespace Shaver
 
         private void SetColorScheme(Color color)
         {
-            Color txtc = (color.R + color.G + color.B) / 3 > 128 ? Color.Black : Color.White;
-            foreach (Control c in Controls)
+            // Decide on text color based on brightness.
+            var textColor = (color.R + color.G + color.B) / 3 > 128 
+                ? Color.Black : Color.White;
+
+            // Loop through controls on form.
+            foreach (var control in Controls)
             {
-                KeyboardButton kb = c as KeyboardButton;
-                if (kb != null)
+                // If it's a keybaord button.
+                KeyboardButton keyboardButton = control as KeyboardButton;
+                if (keyboardButton != null)
                 {
-                    kb.DefaultColor = color;
-                    kb.MouseOverColor = Lighten(color, 25);
-                    kb.MouseDownColor = Lighten(color, -25);
-                    kb.TextColor = txtc;
+                    keyboardButton.DefaultColor = color;
+                    keyboardButton.MouseOverColor = Lighten(color, 25);
+                    keyboardButton.MouseDownColor = Lighten(color, -25);
+                    keyboardButton.TextColor = textColor;
                 }
-                TextBox tb = c as TextBox;
-                if (tb != null)
+
+                // If it's a text box.
+                TextBox textBox = control as TextBox;
+                if (textBox != null)
                 {
-                    tb.BackColor = Lighten(color, -35);
-                    tb.ForeColor = txtc;
+                    textBox.BackColor = Lighten(color, -35);
+                    textBox.ForeColor = textColor;
                 }
             }
-            BackColor = Lighten(color, -10);
-            System.IO.File.WriteAllText("theme.txt", color.R + "," + color.G + "," + color.B);
+
+            // Set form background color.
+            BackColor = Lighten(color, -10); 
+
+            // Save file.
+            File.WriteAllText(ThemeFileName, color.R + "," + color.G + "," + color.B);
         }
 
         /// <summary>
