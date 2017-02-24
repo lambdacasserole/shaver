@@ -9,12 +9,24 @@ namespace Shaver
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// The filename of the theme file.
+        /// </summary>
         private const string ThemeFileName = "theme.txt";
 
+        /// <summary>
+        /// The current collection of typed characters in the editor.
+        /// </summary>
         private List<ShavianCharacter> typedText;
 
+        /// <summary>
+        /// Whether or not shift is currently enabled for the keyboard.
+        /// </summary>
         private bool keyboardShift;
 
+        /// <summary>
+        /// A dictionary of keyboard keys mapping to letter buttons.
+        /// </summary>
         private Dictionary<Keys, LetterButton> letterKeyMappings;
 
         /// <summary>
@@ -34,14 +46,24 @@ namespace Shaver
             }
         }
 
+        /// <summary>
+        /// Returns true if a color scheme file exists for the application, otherwise returns false.
+        /// </summary>
+        /// <returns></returns>
         private bool HasColorScheme()
         {
             return File.Exists(ThemeFileName);
         }
 
+        /// <summary>
+        /// Gets the saved color scheme for the application, if it exists.
+        /// </summary>
+        /// <returns></returns>
         private Color GetSavedColorScheme()
         {
-            var color = Color.FromArgb(255, 64, 64, 64);
+            var color = Color.FromArgb(255, 64, 64, 64); // Default color.
+
+            // If we have a saved color scheme.
             if (HasColorScheme())
             {
                 var text = File.ReadAllText(ThemeFileName);
@@ -63,41 +85,25 @@ namespace Shaver
             return color;
         }
 
+        /// <summary>
+        /// Lightens a color by an amount.
+        /// </summary>
+        /// <param name="original">The original color.</param>
+        /// <param name="amount">The amount to ligten by.</param>
+        /// <returns></returns>
         private Color Lighten(Color original, int amount)
         {
-            int r = original.R;
-            int g = original.G;
-            int b = original.B;
-            r += amount;
-            g += amount;
-            b += amount;
-            if (r > 255)
-            {
-                r = 255;
-            }
-            if (r < 0)
-            {
-                r = 0;
-            }
-            if (g > 255)
-            {
-                g = 255;
-            }
-            if (g < 0)
-            {
-                g = 0;
-            }
-            if (b > 255)
-            {
-                b = 255;
-            }
-            if (b < 0)
-            {
-                b = 0;
-            }
-            return Color.FromArgb(original.A, r, g, b);
+            return Color.FromArgb(
+                original.A,
+                Math.Min(Math.Max(original.R + amount, 0), 255),
+                Math.Min(Math.Max(original.G + amount, 0), 255),
+                Math.Min(Math.Max(original.B + amount, 0), 255));
         }
 
+        /// <summary>
+        /// Sets the color scheme of the keyboard.
+        /// </summary>
+        /// <param name="color">The base color of the new color scheme.</param>
         private void SetColorScheme(Color color)
         {
             // Decide on text color based on brightness.
