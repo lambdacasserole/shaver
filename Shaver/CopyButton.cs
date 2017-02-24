@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Shaver
@@ -28,10 +27,11 @@ namespace Shaver
         }
 
         /// <summary>
-        /// Initializes a new instance of a shift button.
+        /// Initializes a new instance of a copy keyboard button.
         /// </summary>
         public CopyButton() : base()
         {
+            // Initialize icon size to 15.
             iconSize = 15;
         }
 
