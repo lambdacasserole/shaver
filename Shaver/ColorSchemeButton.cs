@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Shaver
@@ -23,7 +22,7 @@ namespace Shaver
             set
             {
                 iconSize = value;
-                Refresh();
+                Refresh(); // Redraw.
             }
         }
 
@@ -32,6 +31,7 @@ namespace Shaver
         /// </summary>
         public ColorSchemeButton() : base()
         {
+            // Icon size should initially be 8.
             iconSize = 8;
         }
 
@@ -39,7 +39,7 @@ namespace Shaver
         {
             base.OnPaint(e);
 
-            // Draw two pages copy symbol.
+            // Draw four colored circles icon.
             int x = Width / 2;
             int y = Height / 2;
             int s = IconSize / 4;
