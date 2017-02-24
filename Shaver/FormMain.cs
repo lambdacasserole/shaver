@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Shaver
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         /// <summary>
         /// The filename of the theme file.
@@ -161,7 +161,7 @@ namespace Shaver
             inputBox.Text = TypedText;
         }
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
 
