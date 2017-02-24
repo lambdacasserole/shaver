@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Shaver
 {
-    class ShavianCharacter
+    /// <summary>
+    /// Represents a character in the Shaw alphabet.
+    /// </summary>
+    public class ShavianCharacter
     {
         private string character;
 
+        /// <summary>
+        /// Gets the character as a string.
+        /// </summary>
         public string Character
         {
             get
@@ -18,6 +20,9 @@ namespace Shaver
             }
         }
 
+        /// <summary>
+        /// Gets the length of the character in bytes.
+        /// </summary>
         public int Length
         {
             get
@@ -26,6 +31,10 @@ namespace Shaver
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of a character of the Shaw alphabet.
+        /// </summary>
+        /// <param name="character">The character as a string.</param>
         public ShavianCharacter(string character)
         {
             this.character = character;
