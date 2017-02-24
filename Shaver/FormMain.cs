@@ -269,7 +269,7 @@ namespace Shaver
             }
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             // Set shift if pressed.
             if (e.KeyCode == Keys.ShiftKey)
@@ -278,7 +278,7 @@ namespace Shaver
             }
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        private void FormMain_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.ShiftKey)
             {
@@ -308,7 +308,7 @@ namespace Shaver
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormMain_Load(object sender, EventArgs e)
         {
             // Add letter key click event to every letter key.
             foreach (Control control in this.Controls)
