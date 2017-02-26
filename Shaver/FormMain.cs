@@ -339,5 +339,12 @@ namespace Shaver
                 SetColorScheme(dialog.Color);
             }
         }
+
+        private void clearButton1_Click(object sender, EventArgs e)
+        {
+            // Clear input.
+            typedText.Clear();
+            inputBox.Text = TypedText;
+        }
     }
 }

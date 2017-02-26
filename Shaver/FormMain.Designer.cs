@@ -59,6 +59,7 @@
             this.keyButton3 = new Shaver.LetterButton();
             this.keyButton2 = new Shaver.LetterButton();
             this.keyButton1 = new Shaver.LetterButton();
+            this.clearButton1 = new Shaver.ClearButton();
             this.SuspendLayout();
             // 
             // inputBox
@@ -94,7 +95,7 @@
             this.copyButton1.MouseDownColor = System.Drawing.Color.Black;
             this.copyButton1.MouseOverColor = System.Drawing.Color.Gray;
             this.copyButton1.Name = "copyButton1";
-            this.copyButton1.Size = new System.Drawing.Size(48, 75);
+            this.copyButton1.Size = new System.Drawing.Size(48, 35);
             this.copyButton1.TabIndex = 26;
             this.copyButton1.TextColor = System.Drawing.Color.White;
             this.copyButton1.Click += new System.EventHandler(this.copyButton1_Click);
@@ -554,12 +555,26 @@
             this.keyButton1.TabIndex = 1;
             this.keyButton1.TextColor = System.Drawing.Color.White;
             // 
-            // Form1
+            // clearButton1
+            // 
+            this.clearButton1.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.clearButton1.IconSize = 15;
+            this.clearButton1.Location = new System.Drawing.Point(498, 52);
+            this.clearButton1.MouseDownColor = System.Drawing.Color.Black;
+            this.clearButton1.MouseOverColor = System.Drawing.Color.Gray;
+            this.clearButton1.Name = "clearButton1";
+            this.clearButton1.Size = new System.Drawing.Size(48, 35);
+            this.clearButton1.TabIndex = 28;
+            this.clearButton1.TextColor = System.Drawing.Color.White;
+            this.clearButton1.Click += new System.EventHandler(this.clearButton1_Click);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(558, 261);
+            this.Controls.Add(this.clearButton1);
             this.Controls.Add(this.colorSchemeButton1);
             this.Controls.Add(this.copyButton1);
             this.Controls.Add(this.keyButton27);
@@ -636,6 +651,7 @@
         private ShiftButton keyButton27;
         private CopyButton copyButton1;
         private ColorSchemeButton colorSchemeButton1;
+        private ClearButton clearButton1;
     }
 }
 

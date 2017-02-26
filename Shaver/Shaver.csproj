@@ -49,6 +49,9 @@
     <Compile Include="ColorSchemeButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ClearButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CopyButton.cs">
       <SubType>Component</SubType>
     </Compile>
