@@ -11,7 +11,7 @@ If you're interested in learning more [you can find the Wikipedia article here](
 ## Motivation
 Currently, though Shavian [is supported in Unicode](https://en.wikipedia.org/wiki/Shavian_alphabet#Unicode) as of version 4.0 (April 2003) font support has been very lacking. This keyboard uses [Adagii](http://www.i18nguy.com/unicode/unicode-font.html) as a font but [there are others available](https://en.wikipedia.org/wiki/Shavian_alphabet#Fonts).
 
-I had a personal need to type Shavian, but rather than type it directly using a hacky keyboard add-on I chose to write Shaver so I could type in a seperate window and copy/paste across to an input field/text box. The visual
+I had a personal need to type Shavian, but rather than type it directly using a hacky keyboard add-on I chose to write Shaver so I could type in a seperate window and copy/paste across to an input field/text box. The words representing the letter sounds on each key are especially useful in helping beginners learn to read and write Shavian.
 
 ## Building
 You'll need Visual Studio 2015 installed to build the executable. Just build it like any other C# WinForms solution.
